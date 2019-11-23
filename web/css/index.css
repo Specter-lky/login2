@@ -1,0 +1,47 @@
+body{
+    background-image: url("/public/bg1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+.column{
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -221px;
+    margin-left: -200px;
+}
+h2{
+    color: white;
+}
+.txt{
+    width: 90%;
+    height: 42px;
+    padding: 4px 20px;
+    border: solid 1px #cccccc;
+    border-radius:22px;
+    box-sizing:border-box;
+    outline: 0;
+}
+.button{
+    color: white;
+    width: 90%;
+    height: 28px;
+    line-height: 28px;
+    padding: 4px 0;
+    background: dodgerblue;
+    border-radius: 22px;
+    display: inline-block;
+    cursor: pointer;
+    font: normal 13px arial,Microsoft Yahei!important;
+}
+.column .xxx{
+    font-size: 12px;
+    text-align: right;
+    padding: 0 25px;
+    margin-top: 8px;
+    color: white;
+}
