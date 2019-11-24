@@ -26,9 +26,11 @@ public class HiController {
         HttpSession httpSession=request.getSession(true);
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+        //获取登录页面中表单提交的信息
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User loginuser=new User(username,password);
+        //如果登录发生错误，利用session传递登录错误的信息，跳转到登录页面index.jsp
         if(userDao.login(loginuser)==null){
             if (userDao.check(username)==null){
                 httpSession.setAttribute("error","用户不存在,请先注册");
@@ -39,6 +41,7 @@ public class HiController {
             return "redirect:/index.jsp";
         }
         else {
+            //如果登录成功，利用model传递登录成功信息，跳转到信息页面message.jsp
             model.addAttribute("status","欢迎你"+username+"，登录成功！");
             return "message";
         }
@@ -48,20 +51,24 @@ public class HiController {
         HttpSession session=request.getSession();
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+        //获取注册页面中表单提交的信息
         String username = request.getParameter("username");
         String password1 = request.getParameter("password1");
         String password2 =request.getParameter("password2");
         if (!password1.equals(password2)){
+            //注册页面中，两次输入的密码不一致，返回注册页面register.jsp
             session.setAttribute("pass","两次密码不一致");
-            return "/register";
+            return "register";
         }
         User user=new User(username,password1);
         if(userDao.check(username)==null){
+            //注册成功，返回登录首页index.jsp
             session.setAttribute("success","注册成功");
             userDao.addUser(user);
             return "redirect:/index.jsp";
         }
         else {
+            //注册时，填写的用户名已存在，返回注册页面register.jsp
             session.setAttribute("pass","用户名已存在");
             return "register";
         }

@@ -19,6 +19,7 @@ if (session.getAttribute("pass")!=null)
     %>
 <script>alert("<%=pass%>");</script>
     <%
+    session.setAttribute("pass",null);
 }
 %>
 <body>
