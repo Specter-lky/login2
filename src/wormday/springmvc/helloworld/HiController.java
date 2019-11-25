@@ -29,6 +29,11 @@ public class HiController {
         //获取登录页面中表单提交的信息
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        //如果没填写用户名和密码，直接登录，就会报错，并跳转回登录页面index.jsp
+        if(username==null){
+            httpSession.setAttribute("error","还没登录，请先登录");
+            return "redirect:/index.jsp";
+        }
         User loginuser=new User(username,password);
         //如果登录发生错误，利用session传递登录错误的信息，跳转到登录页面index.jsp
         if(userDao.login(loginuser)==null){
